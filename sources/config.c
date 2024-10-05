@@ -58,6 +58,8 @@ void od_config_init(od_config_t *config)
 	config->hba_file = NULL;
 	config->group_checker_interval = 7000; // 7 seconds
 	od_list_init(&config->listen);
+
+	config->log_supress_auth_allowed = 0;
 }
 
 void od_config_reload(od_config_t *current_config, od_config_t *new_config)
@@ -360,4 +362,6 @@ void od_config_print(od_config_t *config, od_logger_t *logger)
 			       listen->tls_opts->tls_protocols);
 		od_log(logger, "config", NULL, NULL, "");
 	}
+	od_log(logger, "config", NULL, NULL, "log_supress_auth_allowed      %s",
+	       od_config_yes_no(config->log_supress_auth_allowed));
 }

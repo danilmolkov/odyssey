@@ -128,6 +128,7 @@ Set up your CLion to build project in container, [manual](https://github.com/shu
 * [log\_debug](documentation/configuration.md#log_debug-yesno)
 * [log\_config](documentation/configuration.md#log_config-yesno)
 * [log\_session](documentation/configuration.md#log_session-yesno)
+* [log\_supress\_auth\_allowed](documentation/configuration.md#log_session-yesno)
 * [log\_query](documentation/configuration.md#log_query-yesno)
 * [log\_stats](documentation/configuration.md#log_stats-yesno)
 * [stats\_interval](documentation/configuration.md#stats_interval-integer)

@@ -25,6 +25,7 @@ typedef enum {
 	OD_LLOG_FILE,
 	OD_LLOG_FORMAT,
 	OD_LLOG_STATS,
+	OD_LLOG_SUPRESS_AUTH_ALLOWED,
 
 	/* Prometheus */
 	OD_LLOG_GENERAL_STATS_PROM,
@@ -183,6 +184,7 @@ static od_keyword_t od_config_keywords[] = {
 	od_keyword("log_syslog_ident", OD_LLOG_SYSLOG_IDENT),
 	od_keyword("log_syslog_facility", OD_LLOG_SYSLOG_FACILITY),
 	od_keyword("stats_interval", OD_LSTATS_INTERVAL),
+	od_keyword("log_supress_auth_allowed", OD_LLOG_SUPRESS_AUTH_ALLOWED),
 
 	/* Prometheus */
 	od_keyword("log_general_stats_prom", OD_LLOG_GENERAL_STATS_PROM),
@@ -2799,6 +2801,12 @@ static int od_config_reader_parse(od_config_reader_t *reader,
 				reader, &config->group_checker_interval);
 			if (rc == -1)
 				goto error;
+			continue;
+		case OD_LLOG_SUPRESS_AUTH_ALLOWED:
+			if (!od_config_reader_yes_no(
+				    reader, &config->log_supress_auth_allowed)) {
+				goto error;
+			}
 			continue;
 		default:
 			od_config_reader_error(reader, &token,

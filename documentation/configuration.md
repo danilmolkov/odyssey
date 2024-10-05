@@ -149,6 +149,12 @@ Write client connect and disconnect events to the log.
 
 `log_session yes`
 
+#### log\_supress\_auth\_allowed *yes|no*
+
+Remove event about allowed authentication to the log.
+
+`log_supress_auth_allowed no`
+
 #### log\_query *yes|no*
 
 Write client queries text to the log. Disabled by default.
