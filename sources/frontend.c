@@ -2220,15 +2220,17 @@ void od_frontend(void *arg)
 			rc = NOT_OK_RESPONSE;
 		} else {
 			rc = od_auth_frontend(client);
-			od_log(&instance->logger, "auth", client, NULL,
-			       "ip '%s' user '%s.%s': host based authentication allowed",
-			       client_ip,
-			       client->rule->db_is_default ?
-				       "(unknown database)" :
-				       client->startup.database.value,
-			       client->rule->user_is_default ?
-				       "(unknown user)" :
-				       client->startup.user.value);
+			if (!instance->config.log_supress_auth_allowed) {
+				od_log(&instance->logger, "auth", client, NULL,
+				       "ip '%s' user '%s.%s': host based authentication allowed",
+				       client_ip,
+				       client->rule->db_is_default ?
+					       "(unknown database)" :
+					       client->startup.database.value,
+				       client->rule->user_is_default ?
+					       "(unknown user)" :
+					       client->startup.user.value);
+			}
 		}
 	} else {
 		od_error(
