@@ -151,7 +151,7 @@ Write client connect and disconnect events to the log.
 
 #### log\_supress\_auth\_allowed *yes|no*
 
-Remove event about allowed authentication to the log.
+Remove event about allowed authentication. Disabled by default.
 
 `log_supress_auth_allowed no`
 
